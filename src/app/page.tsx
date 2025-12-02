@@ -86,7 +86,11 @@ export default function Home() {
                         body: JSON.stringify({ subdomain: input })
                       });
                       const data = await res.json();
-                      if (data.url) window.location.href = data.url;
+                      if (data.error) {
+                        alert('Checkout Error: ' + data.error);
+                      } else if (data.url) {
+                        window.location.href = data.url;
+                      }
                     } catch (e) {
                       console.error(e);
                       alert('Checkout failed');
