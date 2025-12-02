@@ -11,11 +11,12 @@ export function middleware(request: NextRequest) {
     const currentHost = hostname.replace(`.${process.env.NEXT_PUBLIC_ROOT_DOMAIN || 'localhost:3000'}`, '');
 
     // If we are on the root domain (e.g. localhost:3000 or 𓋹.ws), do nothing (let Next.js handle /page.tsx)
+    // If we are on the root domain (e.g. localhost:3000 or 𓋹.ws), do nothing (let Next.js handle /page.tsx)
     if (
         hostname === 'localhost:3000' ||
         hostname === 'xn--158h.ws' ||
         hostname === 'www.xn--158h.ws' ||
-        hostname === 'dawnblack.netlify.app' // Add Netlify domain
+        hostname.endsWith('.netlify.app') // Catch all Netlify domains (main + previews)
     ) {
         // Special case: if we are visiting /dashboard, allow it.
         return NextResponse.next();
