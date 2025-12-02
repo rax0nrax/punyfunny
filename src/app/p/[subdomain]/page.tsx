@@ -36,26 +36,6 @@ export default function ProfilePage({ params }: Props) {
     if (loading) return <div className="min-h-screen bg-black text-white flex items-center justify-center">Loading...</div>;
 
     if (!config) {
-        return (
-            <div className="min-h-screen flex items-center justify-center bg-black text-white">
-                <div className="text-center">
-                    <h1 className="text-6xl mb-4">{params.subdomain}.𓋹.ws</h1>
-                    <p className="text-xl text-gray-500">This domain is available!</p>
-
-                    {/* DEBUG INFO */}
-                    <div className="mt-8 p-4 bg-gray-900 rounded text-left text-xs font-mono text-gray-400 inline-block">
-                        <p>Raw Param: {params.subdomain}</p>
-                        <p>Decoded: {decodeURIComponent(params.subdomain)}</p>
-                        <p>DB Keys: {JSON.stringify(Object.keys(DB.getSync ? DB.getSync() : {}))}</p>
-                    </div>
-
-                    <div className="mt-4">
-                        <a href="/" className="inline-block bg-white text-black px-6 py-2 rounded-full font-bold">
-                            Register Now
-                        </a>
-                    </div>
-                </div>
-            </div>
         );
     }
 
